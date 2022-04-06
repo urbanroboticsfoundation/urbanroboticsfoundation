@@ -1,0 +1,19 @@
+CancelTripTicket DEFINITIONS AUTOMATIC TAGS ::= 
+BEGIN
+  CancelCheck ::= SEQUENCE
+  {
+     startTime TIME-OF-DAY,
+     cancelTime REAL,
+     currentTime TIME-OF-DAY
+  }                                                    
+ExceptionOptions ::= CHOICE{
+        executeFailure UTF8String (SIZE(1..16)),
+        cancelTicket UTF8String (SIZE(1..16))
+
+}
+END
+
+--Comments--
+--if currentTime - startTime > cancelTime -> executeFailure else -> cancelTicket--
+--This code is for if the robot is requested to cancel a current trip ticket and has to 
+decide whether or not it must cancel it or refuse to cancel it.-- 
