@@ -1,0 +1,17 @@
+TripException DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+ExceptionType ::= CHOICE{
+        ticketRejected BOOLEAN,
+        ticketCompleted BOOLEAN
+}
+
+ExceptionOptions ::= CHOICE{
+        TicketChangeRequest SEQUENCE {
+        startLocation UTF8String (SIZE(1..16)),
+        endLocation UTF8String (SIZE(1..16)),
+        arrivalTime DATE-TIME,
+        },
+        provideFailure UTF8String (SIZE(1..16)),
+        executeFailure UTF8String (SIZE(1..16))
+}
+END
